@@ -1,52 +1,39 @@
-document.querySelector("#prev").addEventListener("click", () => {
-  const newIndex = getCurrentIndex() - 1;
-  setActive(newIndex);
-  setEnabled(newIndex);
-  setProgress(newIndex);
-});
+const progress = document.getElementById("progress");
+const prev = document.getElementById("prev");
+const next = document.getElementById("next");
+const circles = document.querySelectorAll(".circle");
 
-document.querySelector("#next").addEventListener("click", () => {
-  const newIndex = getCurrentIndex() + 1;
-  setActive(newIndex);
-  setEnabled(newIndex);
-  setProgress(newIndex);
-});
+let currentActive = 1;
 
-function getCurrentIndex() {
-  let i = 0;
-  document.querySelectorAll(".circle").forEach((element, index) => {
-    if (element.classList.contains("active")) {
-      i = index;
-    }
-  });
-  return i;
-}
+next.addEventListener("click", () => {
+  currentActive++;
 
-function setActive(index) {
-  document.querySelectorAll(".circle").forEach((element, i) => {
-    if (i !== index) {
-      element.classList.remove("active");
-    } else {
-      element.classList.add("active");
-    }
-  });
-}
-
-function setEnabled(index) {
-  const atFirstElement = index === 0;
-  const atLastElement = index === 3;
-  if (atFirstElement) {
-    document.querySelector("#prev").setAttribute("disabled", "disabled");
-  } else if (atLastElement) {
-    document.querySelector("#next").setAttribute("disabled", "disabled");
-  } else {
-    document.querySelector("#prev").removeAttribute("disabled");
-    document.querySelector("#next").removeAttribute("disabled");
+  if (currentActive > circles.length) {
+    currentActive = circles.length;
   }
-}
+  update();
+});
 
-function setProgress(index) {
-  document
-    .querySelector("#progress")
-    .setAttribute("style", `width: ${(index * 100) / 3}%`);
+prev.addEventListener("click", () => {
+  currentActive--;
+
+  if (currentActive < 1) {
+    currentActive = 1;
+  }
+  update();
+});
+
+function update() {
+  circles.forEach((circle, idx) => {
+    if (idx < currentActive) {
+      circle.classList.add("active");
+    } else {
+      circle.classList.remove("active");
+    }
+  });
+  const actives = document.querySelectorAll(".active");
+  const width = `${((actives.length - 1) * 100) / (circles.length - 1)}%`;
+  progress.style.width = width;
+  prev.disabled = currentActive === 1;
+  next.disabled = currentActive === circles.length;
 }
