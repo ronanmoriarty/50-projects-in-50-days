@@ -5,15 +5,13 @@ generateJoke();
 
 jokeButton.addEventListener('click', generateJoke);
 
-function generateJoke() {
+async function generateJoke() {
     const config = {
         headers: {
             'Accept': 'application/json'
         }
     };
-    fetch('https://icanhazdadjoke.com/', config)
-        .then(res => res.json())
-        .then(data => {
-            joke.innerHTML = data.joke;
-        });
+    const response = await fetch('https://icanhazdadjoke.com/', config);
+    const data = await response.json();
+    joke.innerHTML = data.joke;
 }
