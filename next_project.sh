@@ -6,7 +6,7 @@ BRANCH_NAME="$1"
 echo "Project Folder: $PROJECT_FOLDER"
 echo "Branch Name: $BRANCH_NAME"
 
-# git checkout -b $BRANCH_NAME
+git checkout -b $BRANCH_NAME
 mkdir $PROJECT_FOLDER
 cp -r _project_starter_/ $PROJECT_FOLDER
 git add .
