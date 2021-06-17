@@ -5,10 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <title>My Project</title>
+    <title>Image Carousel</title>
   </head>
   <body>
-    <h1>Project Starter</h1>
+    <div class="carousel">
+      <div class="images-container" id="images">
+        <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyMTc2MDV8MHwxfGFsbHx8fHx8fHx8fDE2MjM5MTYwOTU&ixlib=rb-1.2.1&q=80&w=1080" alt="first-image">
+        <img src="https://images.unsplash.com/photo-1418985991508-e47386d96a71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyMTc2MDV8MHwxfGFsbHx8fHx8fHx8fDE2MjM5MTYxNzg&ixlib=rb-1.2.1&q=80&w=1080" alt="second-image">
+        <img src="https://images.unsplash.com/photo-1551529609-8b070b9e28ed?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyMTc2MDV8MHwxfGFsbHx8fHx8fHx8fDE2MjM5MTYyMjY&ixlib=rb-1.2.1&q=80&w=1080" alt="third-image">
+        <img src="https://images.unsplash.com/photo-1565118531796-763e5082d113?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyMTc2MDV8MHwxfGFsbHx8fHx8fHx8fDE2MjM5MTYyNjM&ixlib=rb-1.2.1&q=80&w=1080" alt="fourth-image">
+      </div>
+      <div class="buttons-container">
+        <button id="left" class="btn">Prev</button>
+        <button id="right" class="btn">Next</button>
+      </div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
